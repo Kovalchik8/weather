@@ -102,6 +102,7 @@ export default {
       let arr = this.Weather.weather.list.slice(1)
       return arr
     },
+
     ...mapState(['Weather', 'Icons'])
   }
 }
@@ -109,7 +110,6 @@ export default {
 
 <style lang="scss">
 @import '../assets/css/weather-icons.min.css';
-// @import '../assets/css/weather-icons-wind.min.css';
 .board-wrapper {
   display: flex;
   justify-content: center;

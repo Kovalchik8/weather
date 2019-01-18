@@ -1,6 +1,6 @@
 <template>
   
-  <div class="container">
+  <div class="container container--form">
     <form @submit.prevent="findFormSubmit" id="FormFind" action="">
       <input 
         v-model="city"  
@@ -23,7 +23,7 @@ import Board from '@/components/Board'
 import store from '@/store/store'
 
 function getWeather(routeTo, routeFrom, next) {
-  let city = 'Kiev'
+  let city = 'kiev'
   store.dispatch('Weather/fetchWeather', city).then(() => {
     next()
   })
@@ -35,7 +35,7 @@ export default {
   },
   data() {
     return {
-      city: ''
+      city: 'kiev'
     }
   },
   validations: {
@@ -46,6 +46,7 @@ export default {
       this.$v.city.$touch()
       if (!this.$v.city.$error) {
         this.$store.dispatch('Weather/fetchWeather', this.city)
+        this.$store.dispatch('Teleport/getImages', this.city)
       }
     }
   },
@@ -56,6 +57,12 @@ export default {
 </script>
 
 <style lang="scss">
+.container--form {
+  position: absolute;
+  top: 150px;
+  left: 50%;
+  transform: translateX(-50%);
+}
 #FormFind {
   margin: 70px 0;
   position: relative;
