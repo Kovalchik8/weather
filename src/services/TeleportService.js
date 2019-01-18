@@ -12,6 +12,6 @@ const teleportClient = axios.create({
 
 export default {
   getImages(city) {
-    return teleportClient.get('/slug:' + city + '/images/')
+    return teleportClient.get('/slug:' + city.toLowerCase() + '/images/')
   }
 }

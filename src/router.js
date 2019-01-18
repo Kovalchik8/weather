@@ -1,8 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
+import NotFound from './views/NotFound.vue'
 
-import store from '@/store/store'
+// import store from '@/store/store'
 
 Vue.use(Router)
 
@@ -14,6 +15,15 @@ export default new Router({
       path: '/',
       name: 'home',
       component: Home
+    },
+    {
+      path: '/404',
+      name: '404',
+      component: NotFound
+    },
+    {
+      path: '*',
+      redirect: { name: '404' }
     }
   ]
 })

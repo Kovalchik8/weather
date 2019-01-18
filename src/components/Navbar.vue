@@ -18,16 +18,11 @@
 
         <ul class="navbar__nav">
           <router-link :to="{name: 'home'}" >Home</router-link>
-          <router-link :to="{name: 'home'}" >Second</router-link>
+          <router-link :to="{name: '404'}" >Second</router-link>
         </ul>
 
         <!-- Right aligned nav items -->
         <b-navbar-nav class="ml-auto">
-
-          <b-nav-item-dropdown text="Lang" right>
-            <b-dropdown-item href="#">EN</b-dropdown-item>
-            <b-dropdown-item href="#">RU</b-dropdown-item>
-          </b-nav-item-dropdown>
 
         </b-navbar-nav>
 
@@ -41,6 +36,13 @@
 
 <style lang="scss">
 .navbar {
+  z-index: 9999;
+  .navbar-toggler {
+    margin-left: 15px;
+    &:focus {
+      outline: none;
+    }
+  }
   padding: 25px 0;
   background: $colorBgDark;
 
@@ -50,6 +52,11 @@
     justify-content: center;
     margin: 0;
     padding: 0;
+    @media (max-width: 767.98px) {
+      flex-direction: column;
+      align-items: center;
+      margin-top: 30px;
+    }
     a {
       color: white;
       transition: 0.2s;
@@ -57,7 +64,11 @@
       border: 2px solid transparent;
       padding: 3px 20px;
       margin: 0 5px;
-      &:hover {
+      @media (max-width: 767.98px) {
+        margin: 8px 5px;
+      }
+      &:hover,
+      &.router-link-exact-active {
         color: $colorBlue;
         border-color: $colorBlue;
         text-decoration: none;

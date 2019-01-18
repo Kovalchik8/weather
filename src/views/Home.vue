@@ -1,37 +1,43 @@
 <template>
-  
-  <div class="container container--form">
-    <form @submit.prevent="findFormSubmit" id="FormFind" action="">
-      <input 
-        v-model="city"  
-        type="text" 
-        placeholder="Find your location..."
-        @blur="$v.city.$touch()"
-        :class="{'error' : $v.city.$error}"
-      >
-      <button :disabled="$v.city.$error" type="submit">Find</button>
-    </form>
+  <div>
+    <Banner />
+    <div class="container container--form">
+      <form @submit.prevent="findFormSubmit" id="FormFind" action="">
+        <input 
+          v-model="city"  
+          type="text" 
+          placeholder="Find your location..."
+          @blur="$v.city.$touch()"
+          :class="{'error' : $v.city.$error}"
+        >
+        <button :disabled="$v.city.$error" type="submit">Find</button>
+      </form>
 
-    <Board />
+      <Board />
 
+    </div>
   </div>
 </template>
 
 <script>
 import { required } from 'vuelidate/lib/validators'
 import Board from '@/components/Board'
+import Banner from '@/components/Banner'
 import store from '@/store/store'
 
 function getWeather(routeTo, routeFrom, next) {
   let city = 'kiev'
   store.dispatch('Weather/fetchWeather', city).then(() => {
-    next()
+    store.dispatch('Teleport/getImages', city).then(() => {
+      next()
+    })
   })
 }
 
 export default {
   components: {
-    Board
+    Board,
+    Banner
   },
   data() {
     return {
@@ -62,11 +68,16 @@ export default {
   top: 150px;
   left: 50%;
   transform: translateX(-50%);
+  margin-bottom: 60px;
+  @media (max-width: 767.98px) {
+    top: 175px;
+  }
 }
 #FormFind {
   margin: 70px 0;
   position: relative;
   input {
+    box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
     font-size: 0.9rem;
     width: 100%;
     padding: 20px 50px 20px 20px;

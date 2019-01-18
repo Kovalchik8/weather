@@ -118,10 +118,14 @@ export default {
   background: rgba(0, 0, 0, 0.1);
 }
 #board {
+  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
   display: inline-flex;
   border-radius: 10px;
   overflow: hidden;
   background: #323544;
+  @media (max-width: 991.98px) {
+    flex-direction: column;
+  }
 }
 .board-main {
   color: #bfc1c8;

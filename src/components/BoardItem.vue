@@ -48,6 +48,8 @@ export default {
 <style lang="scss">
 .board-item {
   color: #bfc1c8;
+  @media (max-width: 991.98px) {
+  }
   &__header {
     padding: 10px;
     text-align: center;
@@ -61,6 +63,7 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-bottom: 30px;
     i {
       color: $colorBlue;
       transform: scale(2);

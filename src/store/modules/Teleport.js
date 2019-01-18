@@ -23,6 +23,7 @@ export const actions = {
       })
       .catch(error => {
         console.log(error.response)
+        commit('SET_IMAGES', '')
       })
   }
 }

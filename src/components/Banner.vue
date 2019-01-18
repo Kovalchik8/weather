@@ -12,8 +12,14 @@ export default {
         let imgWeb = this.Teleport.images.photos[0].image.web
         if (imgMobile && imgWeb) {
           return { backgroundImage: `url('${imgWeb}')` }
-        } else return ['', '']
-      } else return ['', '']
+        } else
+          return {
+            backgroundImage: ''
+          }
+      } else
+        return {
+          backgroundImage: ''
+        }
     },
     ...mapState(['Teleport'])
   }
@@ -22,14 +28,13 @@ export default {
 
 <style lang="scss">
 .banner {
-  position: relative;
+  position: absolute;
   z-index: -1;
   width: 100%;
   min-height: 350px;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  background-image: url('../assets/images/kyiv.jpg');
   &:before {
     content: '';
     position: absolute;
