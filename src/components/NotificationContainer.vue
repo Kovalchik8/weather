@@ -20,9 +20,14 @@ export default {
 
 <style lang="scss" scoped>
 .notifications {
-  z-index: 999;
+  z-index: 99999;
   position: absolute;
   bottom: 15px;
   right: 20px;
+  @media (max-width: 767.98px) {
+    font-size: 0.9rem;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }
 </style>

@@ -49,6 +49,7 @@ export default {
 .board-item {
   color: #bfc1c8;
   @media (max-width: 991.98px) {
+    border-top: 1px solid rgba(191, 193, 200, 0.3);
   }
   &__header {
     padding: 10px;
