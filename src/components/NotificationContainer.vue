@@ -25,9 +25,13 @@ export default {
   bottom: 15px;
   right: 20px;
   @media (max-width: 767.98px) {
+    width: 80%;
     font-size: 0.9rem;
     left: 50%;
     transform: translateX(-50%);
+  }
+  @media (max-width: 575.98px) {
+    width: 90%;
   }
 }
 </style>

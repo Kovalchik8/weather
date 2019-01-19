@@ -112,7 +112,7 @@ export default {
     left: 0;
   }
   50% {
-    left: 30px;
+    left: 20px;
   }
   100% {
     left: 0;

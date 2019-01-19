@@ -60,13 +60,21 @@ export default {
 
   methods: {
     findFormSubmit() {
+      if (!this.$refs.refInput.value.length) {
+        let notification = {
+          type: 'error',
+          message: 'Input is required'
+        }
+        this.$store.dispatch('Notification/add', notification)
+        return null
+      }
       if (
         (this.latLng.lat == 0 && this.latLng.lng == 0) ||
         this.$refs.refInput.value != this.lastCity
       ) {
         let notification = {
           type: 'error',
-          message: 'Error: Please choose your city'
+          message: 'Invalid city name'
         }
         this.$store.dispatch('Notification/add', notification)
         return null
@@ -77,6 +85,7 @@ export default {
     }
   },
   mounted() {
+    // eslint-disable-next-line no-undef
     var placesAutocomplete = places({
       appId: 'plPJSOUUL3KB',
       apiKey: 'de5ffc4416638b8e51302fb2b43ce502',
@@ -90,7 +99,9 @@ export default {
       }
     }).configure({
       type: 'city',
-      aroundLatLngViaIP: false
+      aroundLatLngViaIP: false,
+      language: 'en'
+      // useDeviceLocation: true
     })
 
     placesAutocomplete.on('change', e => {
@@ -127,7 +138,7 @@ export default {
     box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
     font-size: 0.9rem;
     width: 100%;
-    padding: 20px 50px 20px 20px;
+    padding: 20px 120px 20px 20px;
     background: $colorBgDark;
     color: white;
     outline: none;

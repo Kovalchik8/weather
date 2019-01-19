@@ -48,7 +48,7 @@ export default {
     display: flex;
     align-items: center;
     @media (max-width: 767.98px) {
-      flex-direction: column;
+      justify-content: center;
     }
     span {
       text-align: center;
@@ -56,9 +56,6 @@ export default {
     img {
       width: 15px;
       margin-right: 7px;
-      @media (max-width: 767.98px) {
-        margin-bottom: 7px;
-      }
     }
   }
 }
