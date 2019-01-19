@@ -12,6 +12,7 @@ const teleportClient = axios.create({
 
 export default {
   getImages(city) {
+    if (city == 'Kyiv' || city == 'kyiv') city = 'Kiev'
     return teleportClient.get('/slug:' + city.toLowerCase() + '/images/')
   }
 }

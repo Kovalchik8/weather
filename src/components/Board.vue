@@ -16,7 +16,7 @@
             <div class="num">
               {{temperatureInt}}<sup>o</sup>C
             </div>
-            <i :class="icon"></i>
+            <i :class="icon" class="animated"></i>
           </div>
 
           <div class="board-main__features">
@@ -80,9 +80,6 @@ export default {
     temperatureInt() {
       return parseInt(this.Weather.weather.list[0].main.temp)
     },
-    city() {
-      return this.Weather.weather.city.name
-    },
     country() {
       return this.Weather.weather.city.country
     },
@@ -103,32 +100,53 @@ export default {
       return arr
     },
 
-    ...mapState(['Weather', 'Icons'])
+    ...mapState(['city', 'Weather', 'Icons'])
   }
 }
 </script>
 
 <style lang="scss">
 @import '../assets/css/weather-icons.min.css';
+@keyframes animated {
+  0% {
+    left: 0;
+  }
+  50% {
+    left: 30px;
+  }
+  100% {
+    left: 0;
+  }
+}
 .board-wrapper {
   display: flex;
   justify-content: center;
+  overflow: hidden;
 }
 .board-item:nth-child(2n) {
   background: rgba(0, 0, 0, 0.1);
 }
 #board {
-  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
   display: inline-flex;
-  border-radius: 10px;
   overflow: hidden;
+  overflow-x: scroll;
   background: #323544;
-  @media (max-width: 991.98px) {
-    flex-direction: column;
+  margin-bottom: -17px;
+  &::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
   }
 }
 .board-main {
+  transition: 0.2s;
+  &:hover {
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  }
   color: #bfc1c8;
+  min-width: 375px;
+  @media (max-width: 575.98px) {
+    min-width: 245px;
+  }
   &__header {
     justify-content: space-between;
     padding: 10px;
@@ -156,16 +174,29 @@ export default {
       font-size: 5.4rem;
       font-weight: bold;
       margin-right: 20px;
+      @media (max-width: 575.98px) {
+        font-size: 3.8rem;
+      }
     }
     i {
+      position: relative;
       color: $colorBlue;
       transform-origin: 0% 50%;
       transform: scale(3.2);
+      &.animated {
+        animation: animated 6s both infinite;
+      }
+      @media (max-width: 575.98px) {
+        transform: scale(2.8);
+      }
     }
   }
   &__features {
     display: flex;
     justify-content: space-between;
+    @media (max-width: 575.98px) {
+      flex-direction: column;
+    }
     img {
       height: 20px;
       width: 20px;
@@ -174,6 +205,9 @@ export default {
     div {
       display: flex;
       align-items: center;
+      @media (max-width: 575.98px) {
+        margin: 4px 0;
+      }
       &:not(:last-child) {
         margin-right: 20px;
       }

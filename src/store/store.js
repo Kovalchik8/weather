@@ -14,7 +14,17 @@ export default new Vuex.Store({
     Notification,
     Teleport
   },
-  state: {},
-  mutations: {},
-  actions: {}
+  state: {
+    city: 'Kyiv, Ukraine'
+  },
+  mutations: {
+    SET_CITY(state, city) {
+      state.city = city
+    }
+  },
+  actions: {
+    setCity({ commit }, city) {
+      commit('SET_CITY', city)
+    }
+  }
 })

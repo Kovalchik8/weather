@@ -29,6 +29,7 @@ export default {
 <style lang="scss">
 .banner {
   position: absolute;
+  top: 100px;
   z-index: -1;
   width: 100%;
   min-height: 350px;

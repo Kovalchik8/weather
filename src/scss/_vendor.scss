@@ -1,0 +1,25 @@
+/* The dropdown style */
+.ap-dropdown-menu {
+  background: rgba(30, 32, 43, 0.9);
+  border-radius: 10px;
+}
+
+.ap-name {
+  color: #bfc1c8;
+}
+
+/* The suggestions style */
+.ap-suggestion:hover {
+  background-color: rgba(0, 155, 216, 0.8);
+  .ap-name {
+    color: white;
+  }
+}
+
+/* .a-cursor is the class a suggestion go on hover */
+.ap-cursor {
+   background-color: rgba(0, 155, 216, 0.8);
+   .ap-name {
+     color: white;
+   }
+}

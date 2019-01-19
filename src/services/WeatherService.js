@@ -13,9 +13,14 @@ const apiClient = axios.create({
 })
 
 export default {
-  getWeather(city) {
+  getWeather(latLng) {
     return apiClient.get(
-      'forecast?units=metric&cnt=7&q=' + city + '&APPID=' + apiKey
+      'forecast?units=metric&cnt=7&lat=' +
+        latLng.lat +
+        '&lon=' +
+        latLng.lng +
+        '&APPID=' +
+        apiKey
     )
   }
 }

@@ -48,8 +48,10 @@ export default {
 <style lang="scss">
 .board-item {
   color: #bfc1c8;
-  @media (max-width: 991.98px) {
-    border-top: 1px solid rgba(191, 193, 200, 0.3);
+  height: 100%;
+  transition: 0.2s;
+  &:hover {
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
   }
   &__header {
     padding: 10px;
@@ -58,8 +60,8 @@ export default {
     font-size: 14px;
   }
   &__body {
+    height: calc(100% - 40px);
     padding: 50px 30px 10px;
-    height: 100%;
     background: rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;

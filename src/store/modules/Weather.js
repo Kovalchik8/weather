@@ -13,10 +13,13 @@ export const mutations = {
 }
 
 export const actions = {
-  fetchWeather({ commit, dispatch }, city) {
-    return WeatherService.getWeather(city)
+  fetchWeather({ commit, dispatch }, latLng) {
+    return WeatherService.getWeather(latLng)
       .then(response => {
         commit('SET_WEATHER', response.data)
+        dispatch('setCity', latLng.city, {
+          root: true
+        })
       })
       .catch(error => {
         console.log(error.response)

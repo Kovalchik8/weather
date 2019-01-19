@@ -1,6 +1,6 @@
 <template>
   <div class="container-fluid">
-    <h1>Ops! This page doesn't exist</h1>
+    <h1>Ops! This page doesn't exist...</h1>
     <router-link class="link-home" :to="{name: 'home'}">To home page</router-link>
   </div>
 </template>

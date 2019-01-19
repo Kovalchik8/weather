@@ -4,30 +4,36 @@
     <div class="container container--form">
       <form @submit.prevent="findFormSubmit" id="FormFind" action="">
         <input 
-          v-model="city"  
+          ref="refInput"
+          id="Input"
           type="text" 
           placeholder="Find your location..."
-          @blur="$v.city.$touch()"
-          :class="{'error' : $v.city.$error}"
         >
-        <button :disabled="$v.city.$error" type="submit">Find</button>
+        <button type="submit">Find</button>
       </form>
 
       <Board />
-
     </div>
+
+    <Footer />
   </div>
+  
 </template>
 
 <script>
-import { required } from 'vuelidate/lib/validators'
 import Board from '@/components/Board'
 import Banner from '@/components/Banner'
 import store from '@/store/store'
+import Footer from '@/components/Footer'
 
 function getWeather(routeTo, routeFrom, next) {
   let city = 'kiev'
-  store.dispatch('Weather/fetchWeather', city).then(() => {
+  let latlng = {
+    lat: 50,
+    lng: 30,
+    city: 'Kyiv'
+  }
+  store.dispatch('Weather/fetchWeather', latlng).then(() => {
     store.dispatch('Teleport/getImages', city).then(() => {
       next()
     })
@@ -37,24 +43,65 @@ function getWeather(routeTo, routeFrom, next) {
 export default {
   components: {
     Board,
-    Banner
+    Banner,
+    Footer
   },
   data() {
     return {
-      city: 'kiev'
+      city: 'Kyiv',
+      latLng: {
+        lat: 0,
+        lng: 0,
+        city: 'Kyiv'
+      },
+      lastCity: ''
     }
   },
-  validations: {
-    city: { required }
-  },
+
   methods: {
     findFormSubmit() {
-      this.$v.city.$touch()
-      if (!this.$v.city.$error) {
-        this.$store.dispatch('Weather/fetchWeather', this.city)
-        this.$store.dispatch('Teleport/getImages', this.city)
+      if (
+        (this.latLng.lat == 0 && this.latLng.lng == 0) ||
+        this.$refs.refInput.value != this.lastCity
+      ) {
+        let notification = {
+          type: 'error',
+          message: 'Error: Please choose your city'
+        }
+        this.$store.dispatch('Notification/add', notification)
+        return null
       }
+      this.latLng.city = this.city
+      this.$store.dispatch('Weather/fetchWeather', this.latLng)
+      this.$store.dispatch('Teleport/getImages', this.city)
     }
+  },
+  mounted() {
+    var placesAutocomplete = places({
+      appId: 'plPJSOUUL3KB',
+      apiKey: 'de5ffc4416638b8e51302fb2b43ce502',
+      container: document.querySelector('#Input'),
+      templates: {
+        value: function(suggestion) {
+          let str = ''
+          if (suggestion.administrative) str = ', ' + suggestion.administrative
+          return suggestion.name + str + ', ' + suggestion.country
+        }
+      }
+    }).configure({
+      type: 'city',
+      aroundLatLngViaIP: false
+    })
+
+    placesAutocomplete.on('change', e => {
+      let str = ''
+      if (e.suggestion.administrative) str = ', ' + e.suggestion.administrative
+      this.lastCity = e.suggestion.name + str + ', ' + e.suggestion.country
+
+      this.city = e.suggestion.name
+      this.latLng.lat = e.suggestion.latlng.lat
+      this.latLng.lng = e.suggestion.latlng.lng
+    })
   },
   beforeRouteEnter(routeTo, routeFrom, next) {
     getWeather(routeTo, routeFrom, next)
@@ -64,19 +111,19 @@ export default {
 
 <style lang="scss">
 .container--form {
-  position: absolute;
-  top: 150px;
-  left: 50%;
-  transform: translateX(-50%);
+  position: relative;
+  top: 50px;
   margin-bottom: 60px;
   @media (max-width: 767.98px) {
-    top: 175px;
+    top: 0;
+    margin-bottom: 0;
   }
 }
 #FormFind {
   margin: 70px 0;
   position: relative;
   input {
+    height: auto !important;
     box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
     font-size: 0.9rem;
     width: 100%;
