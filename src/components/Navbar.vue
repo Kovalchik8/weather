@@ -18,7 +18,7 @@
 
         <ul class="navbar__nav">
           <router-link :to="{name: 'home'}" >Home</router-link>
-          <router-link :to="{name: '404'}" >About</router-link>
+          <router-link :to="{name: 'about'}" >About</router-link>
         </ul>
 
         <!-- Right aligned nav items -->
