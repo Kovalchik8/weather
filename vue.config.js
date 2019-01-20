@@ -1,4 +1,4 @@
-const path = require('path')
+// const path = require('path')
 
 module.exports = {
   css: {
@@ -11,8 +11,8 @@ module.exports = {
       }
     }
   },
-  productionSourceMap: false,
-  baseUrl: '/weather/',
-  outputDir: path.resolve(__dirname, 'docs')
-  // publicPath: './'
+  // productionSourceMap: false,
+  // baseUrl: '/weather/',
+  // outputDir: path.resolve(__dirname, 'docs')
+  publicPath: '/weather/'
 }
