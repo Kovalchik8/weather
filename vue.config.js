@@ -12,6 +12,7 @@ module.exports = {
     }
   },
   productionSourceMap: false,
-  outputDir: path.resolve(__dirname, 'docs'),
-  publicPath: './'
+  baseUrl: '/weather/',
+  outputDir: path.resolve(__dirname, 'docs')
+  // publicPath: './'
 }
