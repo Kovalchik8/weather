@@ -12,5 +12,6 @@ module.exports = {
     }
   },
   productionSourceMap: false,
-  outputDir: path.resolve(__dirname, 'docs')
+  outputDir: path.resolve(__dirname, 'docs'),
+  publicPath: './'
 }
