@@ -1,3 +1,5 @@
+const path = require('path')
+
 module.exports = {
   css: {
     loaderOptions: {
@@ -8,5 +10,7 @@ module.exports = {
         `
       }
     }
-  }
+  },
+  productionSourceMap: false,
+  outputDir: path.resolve(__dirname, 'docs')
 }
