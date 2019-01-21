@@ -175,7 +175,7 @@ export default {
       font-weight: bold;
       margin-right: 20px;
       @media (max-width: 575.98px) {
-        font-size: 3.8rem;
+        font-size: 2.8rem;
       }
     }
     i {
@@ -196,6 +196,7 @@ export default {
     justify-content: space-between;
     @media (max-width: 575.98px) {
       flex-direction: column;
+      font-size: 0.9rem;
     }
     img {
       height: 20px;

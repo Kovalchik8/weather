@@ -23,11 +23,6 @@ export default new Router({
       component: About
     },
     {
-      path: '/weather',
-      name: 'home',
-      component: Home
-    },
-    {
       path: '/404',
       name: '404',
       component: NotFound

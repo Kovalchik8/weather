@@ -1,5 +1,3 @@
-// const path = require('path')
-
 module.exports = {
   css: {
     loaderOptions: {
@@ -11,8 +9,6 @@ module.exports = {
       }
     }
   },
-  // productionSourceMap: false,
-  // baseUrl: '/weather/',
-  // outputDir: path.resolve(__dirname, 'docs')
-  publicPath: '/weather/'
+  publicPath: '/weather/', // for gitHub pages
+  productionSourceMap: false
 }
