@@ -4,6 +4,10 @@
     <div class="board-item__body">
       <i :class="icon"></i>
       <div class="board-item__temperature">{{temperatureInt}}<sup>o</sup>C</div>
+      <div class="board-item__wind">
+        <img src="../assets/images/icons/wind.svg" alt="">
+        <span>{{ wind }}</span>
+      </div>
     </div>
   </div>
 </template>
@@ -39,6 +43,9 @@ export default {
     },
     temperatureInt() {
       return parseInt(this.weather.main.temp)
+    },
+    wind() {
+      return this.weather.wind.speed
     },
     ...mapState(['Icons'])
   }
@@ -78,6 +85,17 @@ export default {
     color: white;
     font-size: 1.2rem;
     margin-top: 25px;
+  }
+  &__wind {
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    img {
+      margin-bottom: 3px;
+      display: inline-block;
+      width: 15px;
+    }
   }
 }
 </style>

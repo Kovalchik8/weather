@@ -109,13 +109,13 @@ export default {
 @import '../assets/css/weather-icons.min.css';
 @keyframes animated {
   0% {
-    left: 0;
+    transform: translateX(0px);
   }
   50% {
-    left: 20px;
+    transform: translateX(20px);
   }
   100% {
-    left: 0;
+    transform: translateX(0px);
   }
 }
 .board-wrapper {
@@ -182,12 +182,12 @@ export default {
       position: relative;
       color: $colorBlue;
       transform-origin: 0% 50%;
-      transform: scale(3.2);
+      font-size: 3rem;
       &.animated {
         animation: animated 6s both infinite;
       }
       @media (max-width: 575.98px) {
-        transform: scale(2.8);
+        font-size: 2.4rem;
       }
     }
   }
