@@ -128,7 +128,6 @@ export default {
 }
 #board {
   display: inline-flex;
-  overflow: hidden;
   overflow-x: scroll;
   background: #323544;
   margin-bottom: -17px;
