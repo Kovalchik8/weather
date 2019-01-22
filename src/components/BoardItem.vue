@@ -67,9 +67,7 @@ export default {
     font-size: 14px;
   }
   &__body {
-    height: calc(100% - 40px);
     padding: 50px 30px 10px;
-    background: rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
     align-items: center;

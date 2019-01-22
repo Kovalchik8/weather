@@ -123,7 +123,7 @@ export default {
   justify-content: center;
 }
 .board-item:nth-child(2n) {
-  background: rgba(0, 0, 0, 0.1);
+  background: rgba(0, 0, 0, 0.2);
 }
 #board {
   display: inline-flex;
@@ -134,16 +134,16 @@ export default {
   }
   &::-webkit-scrollbar {
     height: 6px;
-    background-color: #f5f5f5;
+    background-color: #323544;
   }
 
   &::-webkit-scrollbar-thumb {
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-    background-color: $colorBlue;
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 155, 216, 0.8);
   }
 
   &::-webkit-scrollbar-track {
-    background-color: #bfc1c8;
+    background-color: #1e202b;
   }
 }
 .board-main {
