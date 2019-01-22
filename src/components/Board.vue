@@ -121,19 +121,29 @@ export default {
 .board-wrapper {
   display: flex;
   justify-content: center;
-  overflow: hidden;
 }
 .board-item:nth-child(2n) {
   background: rgba(0, 0, 0, 0.1);
 }
 #board {
   display: inline-flex;
-  overflow-x: scroll;
   background: #323544;
-  margin-bottom: -17px;
+  @media (max-width: 1200px) {
+    overflow-x: scroll;
+    overflow-y: hidden;
+  }
   &::-webkit-scrollbar {
-    width: 0px;
-    background: transparent;
+    height: 6px;
+    background-color: #f5f5f5;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: $colorBlue;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: #bfc1c8;
   }
 }
 .board-main {
