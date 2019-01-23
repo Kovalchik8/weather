@@ -22,7 +22,7 @@ export default {
 .notifications {
   z-index: 99999;
   position: absolute;
-  bottom: 15px;
+  bottom: 100px;
   right: 20px;
   @media (max-width: 767.98px) {
     width: 80%;
