@@ -27,12 +27,14 @@ export default {
     ...mapActions('Notification', ['delete'])
   },
   mounted() {
-    this.timeout = setTimeout(() => {
-      this.delete(this.notification)
-    }, 5000)
+    if (this.notification.type !== 'translator') {
+      this.timeout = setTimeout(() => {
+        this.delete(this.notification)
+      }, 5000)
+    }
   },
   beforeDestroy() {
-    clearTimeout(this.timeout)
+    if (this.timeout) clearTimeout(this.timeout)
   }
 }
 </script>

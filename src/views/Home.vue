@@ -54,7 +54,8 @@ export default {
         lng: 0,
         city: 'Kyiv'
       },
-      lastCity: ''
+      lastCity: '',
+      notifiedAboutGoogle: false
     }
   },
 
@@ -85,6 +86,25 @@ export default {
     }
   },
   mounted() {
+    document.addEventListener(
+      'DOMSubtreeModified',
+      () => {
+        if (!this.notifiedAboutGoogle) {
+          var html = document.getElementsByTagName('html')[0]
+          if (html.classList.contains('translated-ltr')) {
+            let notification = {
+              type: 'translator',
+              message:
+                'This website doesnt work properly with google translation. Please turn it off and try again'
+            }
+            this.$store.dispatch('Notification/add', notification)
+            this.notifiedAboutGoogle = true
+            return null
+          }
+        }
+      },
+      true
+    )
     // eslint-disable-next-line no-undef
     var placesAutocomplete = places({
       appId: 'plPJSOUUL3KB',
