@@ -133,7 +133,7 @@ export default {
     overflow-y: hidden;
   }
   &::-webkit-scrollbar {
-    height: 6px;
+    height: 3px;
     background-color: #323544;
   }
 
