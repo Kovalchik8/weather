@@ -56,7 +56,7 @@ export default {
       text-align: center;
     }
     img {
-      width: 15px;
+      width: 25px;
       margin-right: 7px;
     }
   }

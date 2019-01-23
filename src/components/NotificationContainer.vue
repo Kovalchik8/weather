@@ -22,13 +22,14 @@ export default {
 .notifications {
   z-index: 99999;
   position: absolute;
-  bottom: 100px;
+  bottom: 20px;
   right: 20px;
   @media (max-width: 767.98px) {
     width: 80%;
     font-size: 0.9rem;
     left: 50%;
     transform: translateX(-50%);
+    bottom: 100px;
   }
   @media (max-width: 575.98px) {
     width: 90%;
