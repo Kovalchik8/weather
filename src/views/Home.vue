@@ -1,23 +1,17 @@
 <template>
   <div>
-    <Banner />
+    <Banner/>
     <div class="container container--form">
-      <form @submit.prevent="findFormSubmit" id="FormFind" action="">
-        <input 
-          ref="refInput"
-          id="Input"
-          type="text" 
-          placeholder="Find your location..."
-        >
+      <form @submit.prevent="findFormSubmit" id="FormFind" action>
+        <input ref="refInput" id="Input" type="text" placeholder="Find your location...">
         <button type="submit">Find</button>
       </form>
 
-      <Board />
+      <Board/>
     </div>
 
-    <Footer />
+    <Footer/>
   </div>
-  
 </template>
 
 <script>
@@ -44,6 +38,7 @@ export default {
   components: {
     Board,
     Banner,
+
     Footer
   },
   data() {

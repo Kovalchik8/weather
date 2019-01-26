@@ -1,7 +1,8 @@
 <template>
   <div id="app">
-    <NotificationContainer />
-    <Navbar />
+    <Preloader/>
+    <NotificationContainer/>
+    <Navbar/>
 
     <router-view/>
   </div>
@@ -9,13 +10,14 @@
 
 <script>
 import Navbar from '@/components/Navbar'
-
+import Preloader from '@/components/Preloader'
 import NotificationContainer from '@/components/NotificationContainer'
 
 export default {
   components: {
     Navbar,
-    NotificationContainer
+    NotificationContainer,
+    Preloader
   }
 }
 </script>

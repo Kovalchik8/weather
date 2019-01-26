@@ -8,38 +8,36 @@
         </div>
 
         <div class="board-main__body">
-          <div class="board-main__city">{{city}} 
-            <span class="board-main__country">({{ country }})</span>  
+          <div class="board-main__city">
+            {{city}}
+            <span class="board-main__country">({{ country }})</span>
           </div>
           <div class="board-main__temperature">
-
             <div class="num">
-              {{temperatureInt}}<sup>o</sup>C
+              {{temperatureInt}}
+              <sup>o</sup>C
             </div>
             <i :class="icon" class="animated"></i>
           </div>
 
           <div class="board-main__features">
             <div class="board-main__precipitation">
-              <img src="../assets/images/icons/humidity.svg" alt="" srcset="">
+              <img src="../assets/images/icons/humidity.svg" alt srcset>
               <span>{{humidity}}%</span>
-              </div>
+            </div>
             <div class="board-main__wind">
-              <img src="../assets/images/icons/wind.svg" alt="" srcset="">
+              <img src="../assets/images/icons/wind.svg" alt srcset>
               <span>{{wind}} m/sec</span>
-              </div>
+            </div>
             <div class="board-main__humidity">
-              <img src="../assets/images/icons/pressure.svg" alt="" srcset="">
+              <img src="../assets/images/icons/pressure.svg" alt srcset>
               <span>{{pressure}} hPa</span>
-              </div>
+            </div>
           </div>
-
         </div>
-
       </div>
 
-      <BoardItem v-for="(item, index) in followingWeather" :key="index" :weather="item" />
-
+      <BoardItem v-for="(item, index) in followingWeather" :key="index" :weather="item"/>
     </div>
   </div>
 </template>
@@ -101,6 +99,11 @@ export default {
     },
 
     ...mapState(['city', 'Weather', 'Icons'])
+  },
+  mounted() {
+    setTimeout(() => {
+      this.$store.dispatch('setLoader', false)
+    }, 1500)
   }
 }
 </script>
