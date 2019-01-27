@@ -26,6 +26,7 @@ export default {
 body {
   background: #1e202b;
   min-width: 300px;
+  overflow-y: hidden;
 }
 
 #app {

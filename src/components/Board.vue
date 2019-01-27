@@ -103,6 +103,7 @@ export default {
   mounted() {
     setTimeout(() => {
       this.$store.dispatch('setLoader', false)
+      document.getElementsByTagName('BODY')[0].style.overflowY = 'scroll'
     }, 1500)
   }
 }
